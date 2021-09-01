@@ -8,7 +8,8 @@ export default function App() {
       <View style={styles.taskWrapper}>
         <Text style={styles.sectionTitle}>Today's Task</Text>
         <View style={styles.items}>
-
+            <Task text={'Task 1'}></Task>
+            <Task text={'Task 1'}></Task>
         </View>
       </View>
     </View>
@@ -28,6 +29,8 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold'
   },
-  items: {}
+  items: {
+    marginTop: 30,
+  }
 
 });
