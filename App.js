@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { KeyboardAvoidingView, StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard, ScrollView } from 'react-native';
+import { KeyboardAvoidingView, StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard } from 'react-native';
 import Task from './components/Task';
 
 export default function App() {
@@ -12,6 +12,11 @@ export default function App() {
     setTask(null);
   }
 
+  const completeTask = (index) => {
+    let itemsCopy = [...taskItems];
+    itemsCopy.splice(index, 1);
+    setTaskItems(itemsCopy)
+  }
 
   return (
     <View style={styles.container}>
@@ -20,10 +25,13 @@ export default function App() {
         <View style={styles.items}>
         {
             taskItems.map((item, index) => {
-              return <Task key={index} text={item} />
+              return (
+                <TouchableOpacity key={index}  onPress={() => completeTask(index)}>
+                  <Task text={item} /> 
+                </TouchableOpacity>
+              )
             })
-        }
-
+       }
             <Task text={'Task 1'}></Task>
             <Task text={'Task 1'}></Task>
         </View>
